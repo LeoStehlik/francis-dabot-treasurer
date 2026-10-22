@@ -1,0 +1,6 @@
+.reference/
+node_modules/
+dist/
+coverage/
+.pack-*
+.runtime-inspect.json

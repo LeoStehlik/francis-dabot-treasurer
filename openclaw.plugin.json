@@ -1,0 +1,80 @@
+{
+  "id": "discord-user-tipbot",
+  "name": "Discord User TipBot",
+  "description": "Allowlisted TipBot operations through one dedicated Discord user session",
+  "categories": ["finance-payments"],
+  "contracts": {
+    "tools": ["tipbot_help", "tipbot_balance", "tipbot_balances", "tipbot_tip"]
+  },
+  "activation": { "onStartup": true },
+  "configContracts": {
+    "secretInputs": {
+      "paths": [
+        { "path": "token", "expected": "string", "ownerKind": "capability" }
+      ]
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "token",
+      "expectedUserId",
+      "guildId",
+      "contextId",
+      "interactionMode",
+      "tipBotApplicationId",
+      "allowedRecipientIds",
+      "allowedTokenSymbols",
+      "receiptPath"
+    ],
+    "properties": {
+      "token": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "provider", "id"],
+        "properties": {
+          "source": { "enum": ["env", "file", "exec", "store"] },
+          "provider": { "type": "string", "minLength": 1 },
+          "id": { "type": "string", "minLength": 1 }
+        }
+      },
+      "expectedUserId": { "type": "string", "pattern": "^[0-9]{17,20}$" },
+      "guildId": { "type": "string", "pattern": "^[0-9]{17,20}$" },
+      "contextId": { "type": "string", "pattern": "^[0-9]{17,20}$" },
+      "interactionMode": { "enum": ["guild", "dm"] },
+      "tipBotApplicationId": { "type": "string", "pattern": "^[0-9]{17,20}$" },
+      "allowedRecipientIds": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": { "type": "string", "pattern": "^[0-9]{17,20}$" }
+      },
+      "allowedTokenSymbols": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,20}$" }
+      },
+      "tipEnabled": { "type": "boolean", "default": false },
+      "maxPerTip": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        }
+      },
+      "receiptPath": { "type": "string", "minLength": 1 },
+      "confirmationTtlSeconds": {
+        "type": "integer",
+        "minimum": 30,
+        "maximum": 900,
+        "default": 120
+      },
+      "responseTimeoutMs": {
+        "type": "integer",
+        "minimum": 1000,
+        "maximum": 30000,
+        "default": 12000
+      }
+    }
+  }
+}

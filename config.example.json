@@ -1,0 +1,26 @@
+{
+  "plugins": {
+    "entries": {
+      "discord-user-tipbot": {
+        "enabled": true,
+        "config": {
+          "token": {
+            "source": "store",
+            "provider": "default",
+            "id": "DISCORD_DABOT_USER_TOKEN"
+          },
+          "expectedUserId": "111111111111111111",
+          "guildId": "222222222222222222",
+          "contextId": "333333333333333333",
+          "interactionMode": "dm",
+          "tipBotApplicationId": "444444444444444444",
+          "allowedRecipientIds": ["555555555555555555"],
+          "allowedTokenSymbols": ["MSHL"],
+          "tipEnabled": false,
+          "maxPerTip": { "MSHL": "42" },
+          "receiptPath": "/absolute/private/path/tipbot-receipts.jsonl"
+        }
+      }
+    }
+  }
+}

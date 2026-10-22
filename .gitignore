@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+*.tgz
+*.log
+receipts/
+.reference/
+.env*
+!.env.example
+.runtime-inspect.json
+.pack-*
+config.local.json
+*.pem
+*.key
+*.sqlite*
+.DS_Store
