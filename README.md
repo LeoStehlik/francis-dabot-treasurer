@@ -92,3 +92,7 @@ Disable or uninstall `discord-user-tipbot`, remove its configuration and SecretR
 Experimental and deliberately narrow. The read-only command path and TipBot transfers have been exercised with a dedicated account, but Discord can break the underlying protocol without notice.
 
 This project is unofficial and is not affiliated with Discord, TipBot, or OpenClaw.
+
+## License
+
+[MIT](./LICENSE) © 2026 Leo Stehlik
